@@ -20,15 +20,16 @@
         </p>
         
         <div id="convite-form" style="margin-top: 30px;">
-            <input type="text" id="nome" placeholder="Nome do Ninja (Convidado)">
+            <input type="text" id="nome" placeholder="Nome do Ninja (Convidado)" class="anima-entrada" style="animation-delay: 1s;">
             
-            <input type="number" id="convidados" placeholder="Quantos ninjas virão?" 
+            <input type="number" id="convidados" placeholder="Quantos ninjas virão?" class="anima-entrada" style="animation-delay: 1.2s;"
                    oninput="gerarCamposConvidados()">
 
             <div id="lista-detalhada"></div>
 
             <div style="margin-top: 20px;">
-                <button class="btn-confirmar" onclick="confirmarPresenca()">Ativar Mangekyou (Confirmar)</button>
+                <button class="btn-confirmar anima-entrada" style="animation-delay: 1.4s;"
+                onclick="confirmarPresenca()">Ativar Mangekyou (Confirmar)</button>
             </div>
         </div>
     </section>

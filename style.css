@@ -285,4 +285,23 @@ input:focus { border-color: var(--vermelho-vivo); outline: none; box-shadow: 0 0
         transform: scale(1) !important; /* Mantém o tamanho rígido ao clicar */
         box-shadow: 0 0 15px var(--vermelho-vivo);
     }
+
+    /* =========================================
+    7. ANIMAÇÕES NATIVAS CSS (Sem depender do Scroll)
+    ========================================= */
+    .anima-entrada {
+        opacity: 0; /* Começa invisível */
+        animation: deslizarDireita 0.8s ease-out forwards;
+    }
+
+    @keyframes deslizarDireita {
+        from {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
 }
