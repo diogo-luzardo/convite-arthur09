@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Aniversário 9 Anos - Tema Akatsuki</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section class="hero" data-aos="zoom-in" data-aos-duration="1500">
+        <img src="foto01.png" alt="O Ninja Arthur" class="foto-perfil">
+        
+        <h1 data-aos="fade-down" data-aos-delay="500">Arthur faz 9 Anos!</h1>
+        <p data-aos="fade-up" data-aos-delay="800">
+            "Não importa o quão forte você se torne, nunca tente fazer tudo sozinho." <br> 
+            Venha celebrar comigo no estilo Akatsuki!
+        </p>
+        
+        <div id="convite-form" style="margin-top: 30px;">
+            <input type="text" id="nome" placeholder="Nome do Ninja (Convidado)" data-aos="fade-right" data-aos-delay="1000">
+            
+            <input type="number" id="convidados" placeholder="Quantos ninjas virão?" 
+                   data-aos="fade-left" data-aos-delay="1200" 
+                   oninput="gerarCamposConvidados()">
+
+            <div id="lista-detalhada"></div>
+
+            <div data-aos="zoom-in" data-aos-delay="1400" style="margin-top: 20px;">
+                <button class="btn-confirmar" onclick="confirmarPresenca()">Ativar Mangekyou (Confirmar)</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="secao-pergaminho" data-aos="zoom-in-up">
+        
+        <video autoplay muted loop playsinline webkit-playsinline disablePictureInPicture>
+            <source src="Vídeo_de_Fundo_Akatsuki_para_Landing_Page.mp4" type="video/mp4">
+        </video>
+
+        <div id="pergaminho-aberto">
+            <h2>Ninjas Confirmados</h2>
+            <ul id="lista-presenca-final">
+                </ul>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    <script>
+    </script>
+</body>
+</html>
