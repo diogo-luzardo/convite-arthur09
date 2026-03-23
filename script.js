@@ -1,7 +1,8 @@
 // Inicializa as animações do AOS
 AOS.init({
     once: true,
-    disable: 'mobile'
+    disable: 'mobile',
+    offset: 50
 });
 
 // --- 1. EFEITO VISUAL: GENJUTSU DOS CORVOS ---
