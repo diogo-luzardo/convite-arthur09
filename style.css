@@ -46,7 +46,7 @@ p {
     position: relative;
     padding: 40px 0;
     z-index: 1;
-    /* FOTO QUE O ARTHUR ADORA DE VOLTA */
+    /* FOTO QUE O ARTHUR ADORA */
     background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), 
                       url('https://images.alphacoders.com/605/thumb-1920-605592.png');
     background-size: cover;
@@ -72,8 +72,8 @@ p {
     justify-content: center;
     position: relative;
     z-index: 1;
-    background-color: #000;
-    overflow: hidden;
+    background-color: #000; /* Fundo para o vídeo */
+    overflow: hidden; /* TRAVA O VÍDEO: Impede que ele vaze na tela do celular */
 }
 
 /* Vídeo de Fundo exclusivo para esta seção */
@@ -84,6 +84,7 @@ p {
     z-index: -2;
     object-fit: cover;
     opacity: 0.6; /* Mais suave para não ofuscar o texto */
+    pointer-events: none; /* BLINDAGEM: Celular não tenta abrir ao clicar na tela */
 }
 
 /* Camada escura por cima do vídeo para leitura */
@@ -104,7 +105,7 @@ p {
     width: 100%;
     max-width: 600px;
     min-height: 450px;
-    padding: 80px 50px; /* Mantém o texto dentro do papel */
+    padding: 80px 50px; 
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -129,7 +130,7 @@ p {
 
 #pergaminho-aberto h2 {
     font-family: 'Permanent Marker', cursive;
-    color: #8B0000; /* Vermelho sangue seco */
+    color: #8B0000; 
     font-size: 2rem;
     margin-bottom: 25px;
     text-align: center;
@@ -143,7 +144,7 @@ p {
     padding: 0;
     margin: 0;
     width: 100%;
-    color: #1a1a1a; /* Texto preto para legibilidade total */
+    color: #1a1a1a; 
     font-size: 1.1rem;
 }
 
@@ -235,6 +236,18 @@ input:focus { border-color: var(--vermelho-vivo); outline: none; box-shadow: 0 0
    6. RESPONSIVIDADE (MOBILE) - O JUTSU FINAL
 ========================================= */
 @media (max-width: 768px) {
+    
+    /* -----------------------------------------
+       MARRETA DO AOS: Desliga qualquer animação no scroll 
+       para evitar botões "voando" ou sumindo.
+       ----------------------------------------- */
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
+    }
+
     /* Ajusta os textos e a foto para caberem na tela */
     h1 { font-size: 1.8rem; }
     p { font-size: 0.95rem; padding: 0 10px; }
@@ -251,25 +264,25 @@ input:focus { border-color: var(--vermelho-vivo); outline: none; box-shadow: 0 0
     #lista-presenca-final { font-size: 0.95rem; }
 
     /* -----------------------------------------
-       🛠️ CORREÇÕES DE UX PARA O TOUCH (FIM DO ZOOM)
+       CORREÇÕES DE UX PARA O TOUCH E TECLADO
        ----------------------------------------- */
     
-    /* 1. Trava a fonte em 16px para o celular não dar zoom forçado ao digitar */
+    /* Trava a fonte em 16px para o celular não dar zoom forçado ao digitar */
     input {
         font-size: 16px !important;
     }
 
-    /* 2. Ajusta o botão e desativa o "pulo" do hover no toque do dedo */
+    /* Ajusta o botão e desativa o "pulo" do hover no toque do dedo */
     .btn-confirmar {
         padding: 12px 20px;
         font-size: 0.9rem;
         width: 90%;
         max-width: 300px;
-        animation: none; /* Desliga o pulsar no mobile se estiver atrapalhando */
+        animation: none !important; /* Desliga o pulsar no mobile */
     }
 
     .btn-confirmar:hover, .btn-confirmar:active {
-        transform: scale(1); /* Mantém o tamanho rígido ao clicar */
+        transform: scale(1) !important; /* Mantém o tamanho rígido ao clicar */
         box-shadow: 0 0 15px var(--vermelho-vivo);
     }
 }
