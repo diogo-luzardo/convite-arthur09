@@ -1,42 +1,44 @@
 /* =========================================
     1. VARIÁVEIS E BASE (Fonte & Cores)
 ========================================= */
-:root { 
-    --vermelho-itachi: #8B0000; 
-    --vermelho-vivo: #FF0000; 
-    --preto-akatsuki: #050505; 
+:root {
+    --vermelho-itachi: #8B0000;
+    --vermelho-vivo: #FF0000;
+    --preto-akatsuki: #050505;
     --texto-claro: #f0f0f0;
 }
 
-body { 
+body {
     background-color: var(--preto-akatsuki);
-    color: var(--texto-claro); 
+    color: var(--texto-claro);
     font-family: sans-serif;
-    overflow-x: hidden; 
-    margin: 0; 
+    overflow-x: hidden;
+    margin: 0;
     padding: 0;
     overscroll-behavior-y: none;
     box-sizing: border-box;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: inherit;
 }
 
-h1 { 
-    font-family: 'Permanent Marker', cursive; 
-    color: var(--vermelho-vivo); 
-    text-shadow: 0 0 15px var(--vermelho-itachi); 
-    font-size: 2.5rem; 
-    margin-bottom: 10px; 
+h1 {
+    font-family: 'Permanent Marker', cursive;
+    color: var(--vermelho-vivo);
+    text-shadow: 0 0 15px var(--vermelho-itachi);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
     z-index: 2;
 }
 
-p { 
-    font-size: 1.1rem; 
-    color: #ccc; 
-    max-width: 600px; 
-    margin: 0 auto 20px auto; 
+p {
+    font-size: 1.1rem;
+    color: #ccc;
+    max-width: 600px;
+    margin: 0 auto 20px auto;
     padding: 0 15px;
     z-index: 2;
     position: relative;
@@ -45,29 +47,32 @@ p {
 /* =========================================
     2. HERO (Section 1: Formulário)
 ========================================= */
-.hero { 
+.hero {
     min-height: 100vh;
-    height: auto; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
-    text-align: center; 
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     position: relative;
-    padding: 60px 20px; 
+    padding: 60px 20px;
     z-index: 1;
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), 
-                        url('https://images.alphacoders.com/605/thumb-1920-605592.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),
+        url('https://images.alphacoders.com/605/thumb-1920-605592.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
 .hero::before {
-    content: ''; 
-    position: absolute; 
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle, transparent 20%, #000 100%); 
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 20%, #000 100%);
     pointer-events: none;
     z-index: -1;
 }
@@ -88,8 +93,10 @@ p {
 
 .secao-pergaminho video {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: -2;
     object-fit: cover;
     opacity: 0.4;
@@ -99,7 +106,10 @@ p {
 .secao-pergaminho::after {
     content: '';
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(to bottom, #000 0%, transparent 20%, #000 100%);
     z-index: -1;
     pointer-events: none;
@@ -108,9 +118,9 @@ p {
 .pergaminho-header {
     width: 100%;
     max-width: 600px;
-    margin-bottom: -40px; 
+    margin-bottom: -40px;
     z-index: 2;
-    filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.8));
+    filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.8));
 }
 
 .pergaminho-header img {
@@ -129,7 +139,7 @@ p {
     text-shadow: 0 0 10px var(--vermelho-itachi);
     z-index: 2;
     animation: pulsarBanner 1.5s infinite;
-    display: none; /* É ativado pelo JS */
+    display: none;
     text-align: center;
 }
 
@@ -155,14 +165,14 @@ p {
     border: 2px solid #330000;
     border-top: none;
     border-radius: 0 0 15px 15px;
-    box-shadow: 0 20px 50px rgba(255,0,0,0.1);
+    box-shadow: 0 20px 50px rgba(255, 0, 0, 0.1);
     width: 100%;
-    max-width: 560px; 
-    padding: 50px 30px 30px 30px; 
+    max-width: 560px;
+    padding: 50px 30px 30px 30px;
     backdrop-filter: blur(5px);
     z-index: 1;
-    
-    display: none; 
+
+    display: none;
     opacity: 0;
     transform: translateY(-50px);
     transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -178,7 +188,7 @@ p {
     padding: 0;
     margin: 0;
     width: 100%;
-    color: #ddd; 
+    color: #ddd;
     font-size: 1.1rem;
     max-height: 400px;
     overflow-y: auto;
@@ -186,21 +196,21 @@ p {
 }
 
 #lista-presenca-final::-webkit-scrollbar { width: 6px; }
-#lista-presenca-final::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); border-radius: 10px; }
+#lista-presenca-final::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.3); border-radius: 10px; }
 #lista-presenca-final::-webkit-scrollbar-thumb { background: var(--vermelho-itachi); border-radius: 10px; }
 
 #lista-presenca-final li {
-    border-bottom: 1px solid rgba(255,0,0,0.2);
+    border-bottom: 1px solid rgba(255, 0, 0, 0.2);
     padding: 15px 10px;
     transition: 0.3s;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.4);
     margin-bottom: 10px;
     border-radius: 8px;
     border-left: 3px solid var(--vermelho-itachi);
 }
 
 #lista-presenca-final li:hover {
-    background: rgba(255,0,0,0.1);
+    background: rgba(255, 0, 0, 0.1);
     transform: translateX(5px);
 }
 
@@ -217,11 +227,13 @@ p {
 /* =========================================
     4. COMPONENTES DO FORMULÁRIO E ANIMAÇÕES
 ========================================= */
-.foto-perfil { 
-    width: 220px; height: 220px; border-radius: 50%; 
-    border: 4px solid var(--vermelho-vivo); 
-    box-shadow: 0 0 40px var(--vermelho-itachi); 
-    margin-bottom: 20px; 
+.foto-perfil {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 4px solid var(--vermelho-vivo);
+    box-shadow: 0 0 40px var(--vermelho-itachi);
+    margin-bottom: 20px;
     animation: flutuar 4s ease-in-out infinite;
     object-fit: cover;
     z-index: 2;
@@ -237,52 +249,60 @@ p {
     padding: 30px 20px;
     border-radius: 15px;
     backdrop-filter: blur(4px);
-    border: 1px solid rgba(255,0,0,0.2);
+    border: 1px solid rgba(255, 0, 0, 0.2);
 }
 
-input { 
-    display: block; 
-    width: 100%; 
-    margin: 0 auto 15px auto; 
-    padding: 14px; 
-    border-radius: 8px; 
-    border: 1px solid #550000; 
-    background: rgba(17, 17, 17, 0.9); 
-    color: white; 
-    text-align: center; 
+input {
+    display: block;
+    width: 100%;
+    margin: 0 auto 15px auto;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #550000;
+    background: rgba(17, 17, 17, 0.9);
+    color: white;
+    text-align: center;
     transition: 0.3s;
     font-family: inherit;
-    font-size: 16px; 
+    font-size: 16px;
 }
 
-input:focus { border-color: var(--vermelho-vivo); outline: none; box-shadow: 0 0 15px rgba(255,0,0,0.5); }
+input:focus {
+    border-color: var(--vermelho-vivo);
+    outline: none;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
 
-#lista-detalhada { width: 100%; margin: 15px auto; }
+#lista-detalhada {
+    width: 100%;
+    margin: 15px auto;
+}
+
 .convidado-input { display: flex; gap: 10px; margin-bottom: 10px; }
 .nome-detalhe { flex: 2; margin: 0; }
 .idade-detalhe { flex: 1; margin: 0; }
 
-.btn-confirmar { 
+.btn-confirmar {
     background: linear-gradient(45deg, var(--vermelho-itachi), #500000);
-    color: white; 
-    border: 2px solid var(--vermelho-vivo); 
-    padding: 15px 30px; 
-    font-weight: bold; 
-    border-radius: 50px; 
-    cursor: pointer; 
-    transition: 0.4s; 
-    text-transform: uppercase; 
+    color: white;
+    border: 2px solid var(--vermelho-vivo);
+    padding: 15px 30px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.4s;
+    text-transform: uppercase;
     letter-spacing: 1px;
-    box-shadow: 0 0 20px rgba(255,0,0,0.4);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
     animation: pulsar 2s infinite;
     margin-top: 10px;
     width: 100%;
 }
 
-.btn-confirmar:hover:not(:disabled) { 
-    transform: scale(1.03); 
-    box-shadow: 0 0 30px var(--vermelho-vivo); 
-    background: var(--vermelho-vivo); 
+.btn-confirmar:hover:not(:disabled) {
+    transform: scale(1.03);
+    box-shadow: 0 0 30px var(--vermelho-vivo);
+    background: var(--vermelho-vivo);
 }
 
 .btn-confirmar:disabled {
@@ -290,17 +310,31 @@ input:focus { border-color: var(--vermelho-vivo); outline: none; box-shadow: 0 0
 }
 
 /* =========================================
-    5. PARTICULAS (Penas Akatsuki)
+    5. PARTICULAS E RODAPÉ
 ========================================= */
-.particle { position: fixed; top: -50px; pointer-events: none; z-index: 10; }
-.feather { fill: #111; filter: drop-shadow(0 0 2px rgba(0,0,0,0.8)); }
-
-@keyframes flutuar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-@keyframes pulsar {
-    0% { transform: scale(1); box-shadow: 0 0 15px rgba(255,0,0,0.3); }
-    50% { transform: scale(1.02); box-shadow: 0 0 25px rgba(255,0,0,0.6); }
-    100% { transform: scale(1); box-shadow: 0 0 15px rgba(255,0,0,0.3); }
+.particle {
+    position: fixed;
+    top: -50px;
+    pointer-events: none;
+    z-index: 10;
 }
+
+.feather {
+    fill: #111;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.8));
+}
+
+@keyframes flutuar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes pulsar {
+    0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+    50% { transform: scale(1.02); box-shadow: 0 0 25px rgba(255, 0, 0, 0.6); }
+    100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+}
+
 @keyframes fall {
     0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
     10% { opacity: 0.8; }
@@ -308,11 +342,69 @@ input:focus { border-color: var(--vermelho-vivo); outline: none; box-shadow: 0 0
     100% { transform: translateY(110vh) translateX(150px) rotate(720deg); opacity: 0; }
 }
 
+/* -----------------------------------------
+   RODAPÉ (Escondido inicialmente)
+----------------------------------------- */
+.site-footer {
+    background-color: var(--preto-akatsuki);
+    border-top: 1px solid rgba(255, 0, 0, 0.2);
+    padding: 50px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+
+    /* Ajuste para não aparecer antes do tempo */
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.footer-content p {
+    margin-bottom: 5px;
+    color: #f0f0f0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.footer-content .footer-sub {
+    font-size: 0.95rem;
+    color: #aaa;
+    margin-bottom: 25px;
+    font-weight: normal;
+}
+
+.btn-whatsapp-footer {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #25D366;
+    color: #fff;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.2);
+}
+
+.btn-whatsapp-footer:hover {
+    transform: translateY(-3px);
+    background: #20b858;
+}
+
 /* =========================================
     6. RESPONSIVIDADE (MOBILE)
 ========================================= */
 @media (max-width: 768px) {
-    [data-aos] { opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important; }
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
+    }
+
     h1 { font-size: 1.8rem; }
     p { font-size: 0.95rem; }
     .foto-perfil { width: 150px; height: 150px; }

@@ -105,6 +105,7 @@ async function carregarListaPergaminho() {
     const listaUl = document.getElementById('lista-presenca-final');
     const container = document.getElementById('pergaminho-container');
     const loadingBanner = document.getElementById('loading-banner');
+    const footer = document.querySelector('.site-footer');
 
     // 1. Prepara a UI para o modo "Carregamento"
     container.style.display = 'none';
@@ -135,12 +136,15 @@ async function carregarListaPergaminho() {
         listaUl.innerHTML = "<li class='ninja-item' style='text-align:center; color:#ff6b6b;'>Falha na percepção de Chakra.</li>";
     }
 
-    // 2. Finaliza o Carregamento e Revela a Lista
-    loadingBanner.style.display = 'none'; // Esconde o aviso de carregamento
-    container.style.display = 'block'; // Prepara a caixa para deslizar
+    loadingBanner.style.display = 'none';
+    container.style.display = 'block';
     
+    // Mostra o rodapé apenas agora
+    if(footer) footer.style.display = 'block';
+
     setTimeout(() => {
-        container.classList.add('revelado'); // Faz a caixa deslizar
+        container.classList.add('revelado');
+        if(footer) footer.style.opacity = '1';
     }, 50);
 }
 
