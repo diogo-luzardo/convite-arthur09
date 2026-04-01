@@ -1,5 +1,5 @@
 /* =========================================
-   1. VARIÁVEIS E BASE (Fonte & Cores)
+    1. VARIÁVEIS E BASE (Fonte & Cores)
 ========================================= */
 :root { 
     --vermelho-itachi: #8B0000; 
@@ -16,15 +16,20 @@ body {
     margin: 0; 
     padding: 0;
     overscroll-behavior-y: none;
+    box-sizing: border-box;
 }
 
-/* Tipografia */
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
 h1 { 
     font-family: 'Permanent Marker', cursive; 
     color: var(--vermelho-vivo); 
     text-shadow: 0 0 15px var(--vermelho-itachi); 
     font-size: 2.5rem; 
     margin-bottom: 10px; 
+    z-index: 2;
 }
 
 p { 
@@ -33,29 +38,31 @@ p {
     max-width: 600px; 
     margin: 0 auto 20px auto; 
     padding: 0 15px;
+    z-index: 2;
+    position: relative;
 }
 
 /* =========================================
-   2. HERO (Section 1: Foto do Sasuke/Naruto)
+    2. HERO (Section 1: Formulário)
 ========================================= */
 .hero { 
-    min-height: 100vh; 
+    min-height: 100vh;
+    height: auto; 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
     justify-content: center; 
     text-align: center; 
     position: relative;
-    padding: 40px 0;
+    padding: 60px 20px; 
     z-index: 1;
-    /* FOTO QUE O ARTHUR ADORA */
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), 
-                      url('https://images.alphacoders.com/605/thumb-1920-605592.png');
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), 
+                        url('https://images.alphacoders.com/605/thumb-1920-605592.png');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
 }
 
-/* Vinheta de sombra nas bordas (efeito suave) */
 .hero::before {
     content: ''; 
     position: absolute; 
@@ -66,79 +73,104 @@ p {
 }
 
 /* =========================================
-   3. PERGAMINHO (Section 2: Onde o vídeo roda)
+    3. SEÇÃO PERGAMINHO E LOADING
 ========================================= */
 .secao-pergaminho {
-    padding: 100px 20px;
+    padding: 80px 20px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     position: relative;
     z-index: 1;
-    background-color: #000; /* Fundo para o vídeo */
-    overflow: hidden; /* TRAVA O VÍDEO: Impede que ele vaze na tela do celular */
+    background-color: #000;
+    min-height: 100vh;
 }
 
-/* Vídeo de Fundo exclusivo para esta seção */
 .secao-pergaminho video {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
     z-index: -2;
     object-fit: cover;
-    opacity: 0.6; /* Mais suave para não ofuscar o texto */
-    pointer-events: none; /* BLINDAGEM: Celular não tenta abrir ao clicar na tela */
+    opacity: 0.4;
+    pointer-events: none;
 }
 
-/* Camada escura por cima do vídeo para leitura */
 .secao-pergaminho::after {
     content: '';
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.4);
+    background: linear-gradient(to bottom, #000 0%, transparent 20%, #000 100%);
     z-index: -1;
+    pointer-events: none;
 }
 
-/* Pergaminho puro CSS (Papel) */
-#pergaminho-aberto {
-    background: #f4e8d1; /* Papel envelhecido claro */
-    border: 3px solid #330000;
-    border-radius: 8px;
-    box-shadow: inset 0 0 40px rgba(139, 69, 19, 0.4), 0 10px 30px rgba(255,0,0,0.2);
+.pergaminho-header {
     width: 100%;
     max-width: 600px;
-    min-height: 450px;
-    padding: 80px 50px; 
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    filter: drop-shadow(0 0 20px rgba(255,0,0,0.3));
-    /* Linhas de fundo simulando pauta de escrita */
-    background-image: repeating-linear-gradient(transparent, transparent 39px, rgba(139, 69, 19, 0.2) 40px);
+    margin-bottom: -40px; 
+    z-index: 2;
+    filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.8));
 }
 
-/* Os "rolos" de madeira nas bordas do pergaminho */
-#pergaminho-aberto::before, #pergaminho-aberto::after {
-    content: '';
-    position: absolute;
-    left: -15px; right: -15px;
-    height: 25px;
-    background: #3e2723; /* Madeira escura */
-    border-radius: 15px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+.pergaminho-header img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
 }
-#pergaminho-aberto::before { top: -10px; }
-#pergaminho-aberto::after { bottom: -10px; }
 
-#pergaminho-aberto h2 {
+/* NOVO: Estilos do Banner de Loading */
+#loading-banner {
+    color: var(--vermelho-vivo);
     font-family: 'Permanent Marker', cursive;
-    color: #8B0000; 
-    font-size: 2rem;
-    margin-bottom: 25px;
+    font-size: 1.2rem;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px var(--vermelho-itachi);
+    z-index: 2;
+    animation: pulsarBanner 1.5s infinite;
+    display: none; /* É ativado pelo JS */
     text-align: center;
-    border-bottom: 2px solid #8B0000;
-    padding-bottom: 10px;
-    margin-top: 10px;
+}
+
+@keyframes pulsarBanner {
+    0% { opacity: 0.6; transform: scale(0.98); }
+    50% { opacity: 1; transform: scale(1.02); }
+    100% { opacity: 0.6; transform: scale(0.98); }
+}
+
+.icone-loading {
+    display: inline-block;
+    animation: girarChakra 2s linear infinite;
+    margin-right: 5px;
+}
+
+@keyframes girarChakra {
+    100% { transform: rotate(360deg); }
+}
+
+/* CONTAINER DA LISTA */
+#pergaminho-container {
+    background: rgba(15, 15, 15, 0.85);
+    border: 2px solid #330000;
+    border-top: none;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 20px 50px rgba(255,0,0,0.1);
+    width: 100%;
+    max-width: 560px; 
+    padding: 50px 30px 30px 30px; 
+    backdrop-filter: blur(5px);
+    z-index: 1;
+    
+    display: none; 
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+#pergaminho-container.revelado {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 #lista-presenca-final {
@@ -146,164 +178,147 @@ p {
     padding: 0;
     margin: 0;
     width: 100%;
-    color: #1a1a1a; 
+    color: #ddd; 
     font-size: 1.1rem;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
 }
 
+#lista-presenca-final::-webkit-scrollbar { width: 6px; }
+#lista-presenca-final::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); border-radius: 10px; }
+#lista-presenca-final::-webkit-scrollbar-thumb { background: var(--vermelho-itachi); border-radius: 10px; }
+
 #lista-presenca-final li {
-    border-bottom: 1px dashed rgba(0,0,0,0.3);
-    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,0,0,0.2);
+    padding: 15px 10px;
     transition: 0.3s;
+    background: rgba(0,0,0,0.4);
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 3px solid var(--vermelho-itachi);
 }
 
 #lista-presenca-final li:hover {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,0,0,0.1);
+    transform: translateX(5px);
+}
+
+@keyframes entraNinja {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.ninja-item {
+    opacity: 0;
+    animation: entraNinja 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 /* =========================================
-   4. COMPONENTES DO FORMULÁRIO E ANIMAÇÕES
+    4. COMPONENTES DO FORMULÁRIO E ANIMAÇÕES
 ========================================= */
 .foto-perfil { 
-    width: 250px; height: 250px; border-radius: 50%; 
+    width: 220px; height: 220px; border-radius: 50%; 
     border: 4px solid var(--vermelho-vivo); 
-    box-shadow: 0 0 30px var(--vermelho-itachi); 
+    box-shadow: 0 0 40px var(--vermelho-itachi); 
     margin-bottom: 20px; 
-    animation: flutuar 3s ease-in-out infinite;
+    animation: flutuar 4s ease-in-out infinite;
     object-fit: cover;
+    z-index: 2;
+    position: relative;
 }
 
-/* Inputs Gerais */
+#convite-form {
+    width: 100%;
+    max-width: 500px;
+    z-index: 2;
+    position: relative;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,0,0,0.2);
+}
+
 input { 
-    display: block; width: 90%; max-width: 300px; 
-    margin: 15px auto; padding: 12px; 
-    border-radius: 5px; 
+    display: block; 
+    width: 100%; 
+    margin: 0 auto 15px auto; 
+    padding: 14px; 
+    border-radius: 8px; 
     border: 1px solid #550000; 
-    background: rgba(17, 17, 17, 0.8); 
+    background: rgba(17, 17, 17, 0.9); 
     color: white; 
     text-align: center; 
     transition: 0.3s;
     font-family: inherit;
+    font-size: 16px; 
 }
 
-input:focus { border-color: var(--vermelho-vivo); outline: none; box-shadow: 0 0 15px var(--vermelho-itachi); }
+input:focus { border-color: var(--vermelho-vivo); outline: none; box-shadow: 0 0 15px rgba(255,0,0,0.5); }
 
-/* Campos Dinâmicos (Nomes e Idades) */
-#lista-detalhada {
-    width: 90%; max-width: 400px; margin: 15px auto;
-}
-
+#lista-detalhada { width: 100%; margin: 15px auto; }
 .convidado-input { display: flex; gap: 10px; margin-bottom: 10px; }
 .nome-detalhe { flex: 2; margin: 0; }
 .idade-detalhe { flex: 1; margin: 0; }
 
-/* Botão Mangekyou */
 .btn-confirmar { 
-    background: var(--vermelho-itachi); 
-    color: white; border: 2px solid #000; 
-    padding: 15px 40px; 
-    font-weight: bold; border-radius: 50px; 
-    cursor: pointer; transition: 0.4s; 
-    text-transform: uppercase; letter-spacing: 2px;
-    box-shadow: 0 0 15px var(--vermelho-vivo);
+    background: linear-gradient(45deg, var(--vermelho-itachi), #500000);
+    color: white; 
+    border: 2px solid var(--vermelho-vivo); 
+    padding: 15px 30px; 
+    font-weight: bold; 
+    border-radius: 50px; 
+    cursor: pointer; 
+    transition: 0.4s; 
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px rgba(255,0,0,0.4);
     animation: pulsar 2s infinite;
     margin-top: 10px;
+    width: 100%;
 }
 
-.btn-confirmar:hover { transform: scale(1.05); box-shadow: 0 0 40px var(--vermelho-vivo); background: var(--vermelho-vivo); color: white; }
-
-/* Corvos (Criados pelo JS) */
-.crow {
-    position: fixed;
-    top: -50px;
-    background: #111; 
-    clip-path: polygon(0% 20%, 50% 50%, 100% 20%, 50% 100%); 
-    pointer-events: none; 
-    z-index: 10; 
-    opacity: 0.8;
+.btn-confirmar:hover:not(:disabled) { 
+    transform: scale(1.03); 
+    box-shadow: 0 0 30px var(--vermelho-vivo); 
+    background: var(--vermelho-vivo); 
 }
 
-@keyframes flutuar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-@keyframes pulsar {
-    0% { transform: scale(1); box-shadow: 0 0 15px var(--vermelho-vivo); }
-    50% { transform: scale(1.02); box-shadow: 0 0 25px var(--vermelho-vivo); }
-    100% { transform: scale(1); box-shadow: 0 0 15px var(--vermelho-vivo); }
-}
-@keyframes crow-fall {
-    0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
-    10% { opacity: 1; }
-    100% { transform: translateY(110vh) translateX(100px) rotate(20deg); opacity: 0; }
+.btn-confirmar:disabled {
+    opacity: 0.6; cursor: wait; animation: none; border-color: #555; box-shadow: none;
 }
 
 /* =========================================
-   6. RESPONSIVIDADE (MOBILE) - O JUTSU FINAL
+    5. PARTICULAS (Penas Akatsuki)
+========================================= */
+.particle { position: fixed; top: -50px; pointer-events: none; z-index: 10; }
+.feather { fill: #111; filter: drop-shadow(0 0 2px rgba(0,0,0,0.8)); }
+
+@keyframes flutuar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+@keyframes pulsar {
+    0% { transform: scale(1); box-shadow: 0 0 15px rgba(255,0,0,0.3); }
+    50% { transform: scale(1.02); box-shadow: 0 0 25px rgba(255,0,0,0.6); }
+    100% { transform: scale(1); box-shadow: 0 0 15px rgba(255,0,0,0.3); }
+}
+@keyframes fall {
+    0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(110vh) translateX(150px) rotate(720deg); opacity: 0; }
+}
+
+/* =========================================
+    6. RESPONSIVIDADE (MOBILE)
 ========================================= */
 @media (max-width: 768px) {
-    
-    /* -----------------------------------------
-       MARRETA DO AOS: Desliga qualquer animação no scroll 
-       para evitar botões "voando" ou sumindo.
-       ----------------------------------------- */
-    [data-aos] {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
-        animation: none !important;
-    }
-
-    /* Ajusta os textos e a foto para caberem na tela */
+    [data-aos] { opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important; }
     h1 { font-size: 1.8rem; }
-    p { font-size: 0.95rem; padding: 0 10px; }
-    .foto-perfil { width: 160px; height: 160px; }
-
-    /* Arruma os campos das crianças (Empilha) */
-    .convidado-input { flex-direction: column; gap: 5px; }
-    .nome-detalhe, .idade-detalhe { width: 100%; margin: 0; box-sizing: border-box; }
-
-    /* Conserta o Pergaminho */
-    .secao-pergaminho { padding: 40px 10px; }
-    #pergaminho-aberto { padding: 50px 20px; min-height: 300px; }
-    #pergaminho-aberto h2 { font-size: 1.5rem; }
-    #lista-presenca-final { font-size: 0.95rem; }
-
-    /* -----------------------------------------
-       CORREÇÕES DE UX PARA O TOUCH E TECLADO
-       ----------------------------------------- */
-    
-    /* Trava a fonte em 16px para o celular não dar zoom forçado ao digitar */
-    input {
-        font-size: 16px !important;
-    }
-
-    /* Ajusta o botão e desativa o "pulo" do hover no toque do dedo */
-    .btn-confirmar {
-        padding: 12px 20px;
-        font-size: 0.9rem;
-        width: 90%;
-        max-width: 300px;
-        animation: none !important; /* Desliga o pulsar no mobile */
-    }
-
-    .btn-confirmar:hover, .btn-confirmar:active {
-        transform: scale(1) !important; /* Mantém o tamanho rígido ao clicar */
-        box-shadow: 0 0 15px var(--vermelho-vivo);
-    }
-
-    /* =========================================
-    7. ANIMAÇÕES NATIVAS CSS (Sem depender do Scroll)
-    ========================================= */
-    .anima-entrada {
-        opacity: 0; /* Começa invisível */
-        animation: deslizarDireita 0.8s ease-out forwards;
-    }
-
-    @keyframes deslizarDireita {
-        from {
-            opacity: 0;
-            transform: translateX(-50px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
+    p { font-size: 0.95rem; }
+    .foto-perfil { width: 150px; height: 150px; }
+    .convidado-input { flex-direction: column; gap: 8px; }
+    .nome-detalhe, .idade-detalhe { width: 100%; margin: 0; }
+    .secao-pergaminho { padding: 40px 15px; }
+    #pergaminho-container { padding: 40px 15px 20px 15px; }
+    .btn-confirmar { padding: 15px; font-size: 0.9rem; animation: none !important; }
 }

@@ -11,7 +11,7 @@
 <body>
 
     <section class="hero" data-aos="zoom-in" data-aos-duration="1500">
-        <img src="foto01.png" alt="O Ninja Arthur" class="foto-perfil">
+        <img src="foto01.png" alt="O Ninja Arthur" class="foto-perfil" onerror="this.src='https://images.alphacoders.com/605/thumb-1920-605592.png'">
         
         <h1 data-aos="fade-down" data-aos-delay="500">Arthur faz 9 Anos!</h1>
         <p data-aos="fade-up" data-aos-delay="800">
@@ -19,29 +19,35 @@
             Venha celebrar comigo no estilo Akatsuki!
         </p>
         
-        <div id="convite-form" style="margin-top: 30px;">
-            <input type="text" id="nome" placeholder="Nome do Ninja (Convidado)" class="anima-entrada" style="animation-delay: 1s;">
+        <div id="convite-form" data-aos="fade-up" data-aos-delay="1000">
+            <input type="text" id="nome" placeholder="Nome do Ninja (Responsável)">
             
-            <input type="number" id="convidados" placeholder="Quantos ninjas virão?" class="anima-entrada" style="animation-delay: 1.2s;"
+            <input type="number" id="convidados" placeholder="Quantos ninjas virão?" min="1" max="10"
                    oninput="gerarCamposConvidados()">
 
             <div id="lista-detalhada"></div>
 
-            <div style="margin-top: 20px;">
-                <button class="btn-confirmar anima-entrada" style="animation-delay: 1.4s;"
-                onclick="confirmarPresenca()">Ativar Mangekyou (Confirmar)</button>
-            </div>
+            <button class="btn-confirmar" onclick="confirmarPresenca()" id="btn-acao">
+                Ativar Mangekyou (Confirmar)
+            </button>
         </div>
     </section>
 
-    <section class="secao-pergaminho" data-aos="zoom-in-up">
+    <section class="secao-pergaminho" data-aos="fade-up">
         
         <video autoplay muted loop playsinline webkit-playsinline disablePictureInPicture>
             <source src="Vídeo_de_Fundo_Akatsuki_para_Landing_Page.mp4" type="video/mp4">
         </video>
 
-        <div id="pergaminho-aberto">
-            <h2>Ninjas Confirmados</h2>
+        <div class="pergaminho-header">
+            <img src="pergaminho.png" alt="Pergaminho Akatsuki">
+        </div>
+
+        <div id="loading-banner">
+            <span class="icone-loading">🌀</span> A canalizar chakra para revelar a lista...
+        </div>
+
+        <div id="pergaminho-container">
             <ul id="lista-presenca-final">
                 </ul>
         </div>
