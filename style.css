@@ -45,7 +45,7 @@ p {
 }
 
 /* =========================================
-    2. HERO (Section 1: Formulário)
+    2. HERO E INFORMAÇÕES
 ========================================= */
 .hero {
     min-height: 100vh;
@@ -75,6 +75,86 @@ p {
     background: radial-gradient(circle, transparent 20%, #000 100%);
     pointer-events: none;
     z-index: -1;
+}
+
+/* Informações do Evento */
+.info-evento {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--vermelho-itachi);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 10px auto 30px auto;
+    width: 100%;
+    max-width: 500px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 0, 0, 0.1);
+    z-index: 2;
+    position: relative;
+    text-align: left;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.info-item:last-of-type {
+    border-bottom: none;
+    margin-bottom: 10px;
+    padding-bottom: 0;
+}
+
+.info-item .icone {
+    font-size: 1.8rem;
+    background: rgba(255, 0, 0, 0.1);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.info-item div {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-item strong {
+    color: var(--vermelho-vivo);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-item span {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    margin-top: 3px;
+}
+
+.btn-gps {
+    display: block;
+    background: rgba(20, 20, 20, 0.8);
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border: 1px solid #444;
+    transition: 0.3s;
+    font-size: 0.95rem;
+}
+
+.btn-gps:hover {
+    background: var(--vermelho-itachi);
+    border-color: var(--vermelho-vivo);
 }
 
 /* =========================================
@@ -129,7 +209,6 @@ p {
     border-radius: 10px;
 }
 
-/* NOVO: Estilos do Banner de Loading */
 #loading-banner {
     color: var(--vermelho-vivo);
     font-family: 'Permanent Marker', cursive;
@@ -159,7 +238,6 @@ p {
     100% { transform: rotate(360deg); }
 }
 
-/* CONTAINER DA LISTA */
 #pergaminho-container {
     background: rgba(15, 15, 15, 0.85);
     border: 2px solid #330000;
@@ -342,9 +420,6 @@ input:focus {
     100% { transform: translateY(110vh) translateX(150px) rotate(720deg); opacity: 0; }
 }
 
-/* -----------------------------------------
-   RODAPÉ (Escondido inicialmente)
------------------------------------------ */
 .site-footer {
     background-color: var(--preto-akatsuki);
     border-top: 1px solid rgba(255, 0, 0, 0.2);
@@ -353,7 +428,6 @@ input:focus {
     position: relative;
     z-index: 2;
 
-    /* Ajuste para não aparecer antes do tempo */
     display: none;
     opacity: 0;
     transition: opacity 1s ease;
@@ -413,4 +487,9 @@ input:focus {
     .secao-pergaminho { padding: 40px 15px; }
     #pergaminho-container { padding: 40px 15px 20px 15px; }
     .btn-confirmar { padding: 15px; font-size: 0.9rem; animation: none !important; }
+
+    /* Ajuste para a nova caixa de info no mobile */
+    .info-evento { padding: 15px; }
+    .info-item .icone { width: 40px; height: 40px; font-size: 1.4rem; }
+    .info-item span { font-size: 1rem; }
 }
